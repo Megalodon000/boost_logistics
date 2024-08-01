@@ -1,0 +1,21 @@
+<h1>Tracking Details</h1>
+
+<p>
+  <strong>Status:</strong>
+  <%= @tracking.status %>
+</p>
+<p>
+  <strong>Location:</strong>
+  <%= @tracking.location %>
+</p>
+<p>
+  <strong>Notes:</strong>
+  <%= @tracking.notes %>
+</p>
+<p>
+  <strong>Booking ID:</strong>
+  <%= @tracking.booking_id %>
+</p>
+
+<%= link_to 'Edit', edit_admin_tracking_path(@tracking) %>
+<%= link_to 'Back', admin_trackings_path %>

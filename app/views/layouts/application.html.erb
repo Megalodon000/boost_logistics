@@ -5,8 +5,11 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
-
+    
+    <!-- Ensure Tailwind CSS is included -->
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
+    
+    <!-- Include other styles if needed -->
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>

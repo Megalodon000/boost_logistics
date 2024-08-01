@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Boost Logistics Login</title>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+  <style>
+    body {
+      background: url('<%= asset_path('login-bg.jpg') %>') no-repeat center center fixed;
+      background-size: cover;
+      font-family: Arial, sans-serif;
+      color: #fff;
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .container {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      justify-content: center;
+      align-items: center;
+    }
+    .description {
+      width: 50%;
+      padding: 20px;
+      box-sizing: border-box;
+      color: #fff;
+      font-size: 1.2em;
+      font-weight: bold;
+      text-align: left;
+      margin-right: 30px; /* Added space between description and form */
+    }
+    .login-container {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      border-radius: 10px;
+      width: 350px;
+      max-width: 100%;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+      margin-left: 20px;
+    }
+    .login-container h2 {
+      margin-bottom: 20px;
+      text-align: center;
+      color: #fff;
+    }
+    .login-container form {
+      display: flex;
+      flex-direction: column;
+    }
+    .login-container form input {
+      margin-bottom: 15px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      color: #000; /* Text color inside input fields */
+      background-color: #fff; /* Background color of input fields */
+    }
+    .login-container form button {
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      background: #007bff;
+      color: #fff;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .login-container form button:hover {
+      background: #0056b3;
+    }
+    .login-container .register-link {
+      text-align: center;
+      margin-top: 10px;
+    }
+    .login-container .register-link a {
+      color: #007bff;
+      text-decoration: none;
+    }
+    .login-container .register-link a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="description">
+      Découvrez les dernières améliorations de votre plateforme eBusiness
+      - Demandez vos tarifs SpotOn pour plusieurs tailles d'équipement (20', 40', HC) en une seule fois. Gagnez du temps et obtenez les meilleurs tarifs sans effort ! 
+      - Visualisez l'empreinte carbone directement sur les cartes d'itinéraire de la page Booking, vous permettant de prendre des décisions éclairées. 
+      - Réduisez votre empreinte carbone jusqu'à 84 % avec la nouvelle jauge de carbone ACT+ et compensez le reste grâce à nos solutions. 
+
+      Connectez-vous pour découvrir toutes les améliorations de vos fonctionnalités !
+    </div>
+    <div class="login-container">
+      <h2>Boost Logistics Login</h2>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <%= f.label :email, class: 'form-label' %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-input' %>
+
+        <%= f.label :password, class: 'form-label' %>
+        <%= f.password_field :password, autocomplete: "current-password", class: 'form-input' %>
+
+        <% if devise_mapping.rememberable? %>
+          <%= f.check_box :remember_me, class: 'form-check' %>
+          <%= f.label :remember_me, class: 'form-check-label' %>
+        <% end %>
+
+        <%= f.submit "Log in", class: 'btn btn-primary' %>
+      <% end %>
+
+      <%= render "devise/shared/links" %>
+
+      <div class="register-link">
+        <p>Not a customer yet? <%= link_to "Register here", new_user_registration_path %></p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

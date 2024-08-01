@@ -1,0 +1,36 @@
+<%= form_with(model: [:admin, tracking], local: true) do |form| %>
+  <% if tracking.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(tracking.errors.count, "error") %> prohibited this tracking from being saved:</h2>
+      <ul>
+        <% tracking.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.text_field :status %>
+  </div>
+
+  <div class="field">
+    <%= form.label :location %>
+    <%= form.text_field :location %>
+  </div>
+
+  <div class="field">
+    <%= form.label :notes %>
+    <%= form.text_area :notes %>
+  </div>
+
+  <div class="field">
+    <%= form.label :booking_id %>
+    <%= form.collection_select :booking_id, Booking.all, :id, :id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

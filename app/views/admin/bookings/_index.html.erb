@@ -1,0 +1,23 @@
+<h2 class="text-2xl font-bold mb-4">Bookings</h2>
+<table class="min-w-full bg-white">
+  <thead>
+    <tr>
+      <th class="py-2 px-4 border-b">Booking ID</th>
+      <th class="py-2 px-4 border-b">Customer</th>
+      <th class="py-2 px-4 border-b">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @bookings.each do |booking| %>
+      <tr>
+        <td class="py-2 px-4 border-b"><%= booking.id %></td>
+        <td class="py-2 px-4 border-b"><%= booking.customer_name %></td>
+        <td class="py-2 px-4 border-b">
+          <%= link_to 'Show', admin_booking_path(booking), class: 'text-blue-500 hover:underline' %>
+          <%= link_to 'Edit', edit_admin_booking_path(booking), class: 'text-blue-500 hover:underline' %>
+          <%= link_to 'Delete', admin_booking_path(booking), method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-red-500 hover:underline' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

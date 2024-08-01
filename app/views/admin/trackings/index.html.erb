@@ -1,0 +1,27 @@
+<h1>Trackings</h1>
+
+<%= link_to 'New Tracking', new_admin_tracking_path %>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Status</th>
+      <th>Location</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @trackings.each do |tracking| %>
+      <tr>
+        <td><%= tracking.id %></td>
+        <td><%= tracking.status %></td>
+        <td><%= tracking.location %></td>
+        <td>
+          <%= link_to 'Show', admin_tracking_path(tracking) %>
+          <%= link_to 'Edit', edit_admin_tracking_path(tracking) %>
+          <%= link_to 'Delete', admin_tracking_path(tracking), method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

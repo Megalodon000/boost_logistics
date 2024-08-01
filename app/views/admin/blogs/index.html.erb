@@ -1,0 +1,23 @@
+<!-- app/views/admin/blogs/index.html.erb -->
+<h1>Blogs</h1>
+<%= link_to 'New Blog', new_admin_blog_path %>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @blogs.each do |blog| %>
+      <tr>
+        <td><%= blog.title %></td>
+        <td>
+          <%= link_to 'Show', admin_blog_path(blog) %>
+          <%= link_to 'Edit', edit_admin_blog_path(blog) %>
+          <%= link_to 'Delete', admin_blog_path(blog), method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

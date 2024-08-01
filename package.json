@@ -1,0 +1,11 @@
+{
+  "name": "boost_logistics",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:Megalodon000/boost_logistics.git",
+  "author": "ali mercade <alimercad@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "stimulus": "^3.2.2"
+  }
+}
