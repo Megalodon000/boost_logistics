@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Dashboard</title>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbo-track': 'reload' %>
+
+</head>
+<body class="font-sans bg-gray-100">
+  <div class="flex h-screen">
+    <!-- Sidebar -->
+    <aside class="w-1/4 bg-gray-800 text-white p-4">
+      <h1 class="text-xl font-semibold mb-6">Admin Dashboard</h1>
+      <ul class="space-y-4">
+        <li><%= link_to 'Blogs', admin_dashboard_path(section: 'blogs'), class: 'block text-blue-300 hover:text-white' %></li>
+        <li><%= link_to 'Accounts', admin_dashboard_path(section: 'accounts'), class: 'block text-blue-300 hover:text-white' %></li>
+        <li><%= link_to 'Bookings', admin_dashboard_path(section: 'bookings'), class: 'block text-blue-300 hover:text-white' %></li>
+        <li><%= link_to 'Trackings', admin_dashboard_path(section: 'trackings'), class: 'block text-blue-300 hover:text-white' %></li>
+      </ul>
+    </aside>
+
+    <!-- Content Area -->
+    <main class="flex-1 p-6">
+      <% if params[:section] == 'bookings' %>
+        <%= render 'admin/bookings/index' %>
+      <% elsif params[:section] == 'trackings' %>
+        <%= render 'admin/trackings/index' %>
+      <% elsif params[:section] == 'blogs' %>
+        <%= render 'admin/blogs/index' %>
+      <% else %>
+        <%= render 'admin/blogs/index' %>
+      <% end %>
+    </main>
+  </div>
+</body>
+</html>

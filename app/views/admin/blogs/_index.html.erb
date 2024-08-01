@@ -1,26 +1,16 @@
-<h2 class="text-2xl font-bold mb-4">Blogs</h2>
-<%= link_to 'New Blog', new_admin_blog_path, class: 'mb-4 inline-block px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600' %>
-<table class="min-w-full bg-white">
-  <thead>
-    <tr>
-      <th class="py-2 px-4 border-b">Image</th>
-      <th class="py-2 px-4 border-b">Title</th>
-      <th class="py-2 px-4 border-b">Publication Date</th>
-      <th class="py-2 px-4 border-b">Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @blogs.each do |blog| %>
-      <tr>
-        <td class="py-2 px-4 border-b"><%= image_tag blog.image, size: "100x100" %></td>
-        <td class="py-2 px-4 border-b"><%= blog.title %></td>
-        <td class="py-2 px-4 border-b"><%= blog.publication_date.strftime('%B %d, %Y') %></td>
-        <td class="py-2 px-4 border-b">
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+  <% @blogs.each do |blog| %>
+    <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+      <%= image_tag blog.image.url, class: "w-full h-48 object-cover" %>
+      <div class="p-4">
+        <h3 class="text-lg font-semibold mb-2"><%= blog.title %></h3>
+        <p class="text-sm text-gray-600 mb-4"><%= blog.publication_date.strftime("%B %d, %Y") %></p>
+        <div class="flex space-x-4">
           <%= link_to 'Show', admin_blog_path(blog), class: 'text-blue-500 hover:underline' %>
           <%= link_to 'Edit', edit_admin_blog_path(blog), class: 'text-blue-500 hover:underline' %>
           <%= link_to 'Delete', admin_blog_path(blog), method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-red-500 hover:underline' %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

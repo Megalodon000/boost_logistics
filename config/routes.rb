@@ -4,11 +4,11 @@ Rails.application.routes.draw do
   }
 
   authenticated :user, -> user { user.admin? } do
-    root to: 'dashboards#admin', as: :admin_root
+    root to: 'admin/dashboards#admin', as: :admin_root
   end
 
   authenticated :user, -> user { user.customer? } do
-    root to: 'dashboards#customer', as: :customer_root
+    root to: 'customer/dashboards#customer', as: :customer_root
   end
 
   unauthenticated do
@@ -20,25 +20,16 @@ Rails.application.routes.draw do
   resources :blogs
 
   namespace :admin do
-    get 'trackings/index'
-    get 'trackings/show'
-    get 'trackings/new'
-    get 'trackings/edit'
-    get 'bookings/index'
-    get 'bookings/show'
-    get 'bookings/new'
-    get 'bookings/edit'
-    get 'blogs/index'
-    get 'blogs/show'
-    get 'blogs/new'
-    get 'blogs/edit'
+    get 'dashboard', to: 'dashboards#admin', as: :dashboard
+
+    resources :trackings, only: [:index, :show, :new, :edit]
+    resources :bookings, only: [:index, :show, :new, :edit]
+    resources :blogs, only: [:index, :show, :new, :edit]
+
     resources :users, only: [:index] do
       member do
         patch :approve
       end
     end
-    resources :blogs
-    resources :bookings
-    resources :trackings
   end
 end
